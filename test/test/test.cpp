@@ -7,6 +7,7 @@ int main(array<System::String ^> ^args)
 {
 	cout << "helloworld" << endl;
 	cout << "hihi";
+	cout << "sohai";
 	system("pause");
 	return 0;
 }
