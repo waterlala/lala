@@ -1,13 +1,15 @@
 #include "stdafx.h"
 #include <string>
 #include <iostream>
-using namespace std;
-
+using namespace System;
+bool Guess(int number) {
+}
 int main(array<System::String ^> ^args)
 {
-	cout << "helloworld" << endl;
-	cout << "hihi";
-	cout << "sohai";
-	system("pause");
+	int guess;
+	do {
+		std::cout << "Choose a number between 1 - 100 :";
+		std::cin >> guess;
+	} while (!Guess(guess));
 	return 0;
 }
