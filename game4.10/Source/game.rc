@@ -104,11 +104,15 @@ IDB_HELP                BITMAP                  "..\\res\\help.bmp"
 
 IDB_LOADING             BITMAP                  "..\\res\\loading.bmp"
 
-IDB_BLUE                BITMAP                  "..\\res\\bitmap3.bmp"
+IDB_MAP                 BITMAP                  "C:\\Users\\stu31\\Desktop\\totalmap.bmp"
 
-IDB_LALA                BITMAP                  "D:\\game\\game4.10\\picture\\test.bmp"
+IDB_HEROBACK            BITMAP                  "C:\\Users\\stu31\\Desktop\\heroBack.bmp"
 
-IDB_GREEN               BITMAP                  "..\\res\\bmp00001.bmp"
+IDB_HEROFRONT           BITMAP                  "C:\\Users\\stu31\\Desktop\\heroFront.bmp"
+
+IDB_HEROLEFT            BITMAP                  "C:\\Users\\stu31\\Desktop\\heroLeft.bmp"
+
+IDB_HERORIGHT           BITMAP                  "C:\\Users\\stu31\\Desktop\\heroRight.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

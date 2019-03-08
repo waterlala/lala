@@ -16,14 +16,14 @@ namespace game_framework {
 		void LoadBitmap();				// 載入圖形
 		void OnMove();					// 移動擦子
 		void OnShow();					// 將擦子圖形貼到畫面
-		void SetMovingDown(bool flag);	// 設定是否正在往下移動
-		void SetMovingLeft(bool flag);	// 設定是否正在往左移動
-		void SetMovingRight(bool flag); // 設定是否正在往右移動
-		void SetMovingUp(bool flag);	// 設定是否正在往上移動
+		void SetMovingDown(bool flag,int indirection);	// 設定是否正在往下移動
+		void SetMovingLeft(bool flag, int indirection);	// 設定是否正在往左移動
+		void SetMovingRight(bool flag, int indirection); // 設定是否正在往右移動
+		void SetMovingUp(bool flag, int indirection);	// 設定是否正在往上移動
 		void SetXY(int nx, int ny);		// 設定擦子左上角座標
 	protected:
 		CAnimation animation;		// 擦子的動畫
-		int x, y;					// 擦子左上角座標
+		int x, y, direction;					// 擦子左上角座標
 		bool isMovingDown;			// 是否正在往下移動
 		bool isMovingLeft;			// 是否正在往左移動
 		bool isMovingRight;			// 是否正在往右移動

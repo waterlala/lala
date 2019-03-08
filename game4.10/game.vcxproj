@@ -324,14 +324,12 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="cb9j2-bcpmi.bmp" />
-    <Image Include="picture\test.bmp" />
-    <Image Include="res\bitmap3.bmp" />
-    <Image Include="res\bitmap4.bmp" />
-    <Image Include="res\bitmap5.bmp" />
-    <Image Include="res\bmp00001.bmp" />
-    <Image Include="Source\test.bmp" />
-    <Image Include="test.bmp" />
+    <Image Include="C:\Users\stu31\Desktop\hero.bmp" />
+    <Image Include="C:\Users\stu31\Desktop\heroBack.bmp" />
+    <Image Include="C:\Users\stu31\Desktop\heroFront.bmp" />
+    <Image Include="C:\Users\stu31\Desktop\heroLeft.bmp" />
+    <Image Include="C:\Users\stu31\Desktop\heroRight.bmp" />
+    <Image Include="C:\Users\stu31\Desktop\totalmap.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -42,48 +42,77 @@ namespace game_framework {
 		const int Y_POS = 400;
 		x = X_POS;
 		y = Y_POS;
+		direction = 1;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 	}
 
 	void CEraser::LoadBitmap()
 	{
-		animation.AddBitmap(IDB_ERASER1, RGB(255, 255, 255));
-		animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
-		animation.AddBitmap(IDB_ERASER3, RGB(255, 255, 255));
-		animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
+
+		switch (direction)
+		{
+		case 1 :
+			animation.AddBitmap(IDB_HEROFRONT, RGB(255, 255, 255));
+			break;
+		case 2 :
+			animation.AddBitmap(IDB_HEROBACK, RGB(255, 255, 255));
+			break;
+		case 3 :
+			animation.AddBitmap(IDB_HEROLEFT, RGB(255, 255, 255));
+			break;
+		case 4 :
+			animation.AddBitmap(IDB_HERORIGHT, RGB(255, 255, 255));
+			break;
+		}
 	}
 
 	void CEraser::OnMove()
 	{
 		const int STEP_SIZE = 2;
 		animation.OnMove();
-		if (isMovingLeft)
+		if (isMovingLeft) {
+			//animation.AddBitmap(IDB_HEROLEFT, RGB(255, 255, 255));
+			//direction = 3;
 			x -= STEP_SIZE;
-		if (isMovingRight)
+		}
+		if (isMovingRight) {
+			//animation.AddBitmap(IDB_HERORIGHT, RGB(255, 255, 255));
+			//direction = 4;
 			x += STEP_SIZE;
-		if (isMovingUp)
+		}
+		if (isMovingUp) {
+			//animation.AddBitmap(IDB_HEROBACK, RGB(255, 255, 255));
+			//direction = 2;
 			y -= STEP_SIZE;
-		if (isMovingDown)
+		}
+		if (isMovingDown) {
+			//animation.AddBitmap(IDB_HEROFRONT, RGB(255, 255, 255));
+			//direction = 1;
 			y += STEP_SIZE;
+		}
 	}
 
-	void CEraser::SetMovingDown(bool flag)
+	void CEraser::SetMovingDown(bool flag,int indirection)
 	{
+		direction = indirection;
 		isMovingDown = flag;
 	}
 
-	void CEraser::SetMovingLeft(bool flag)
+	void CEraser::SetMovingLeft(bool flag, int indirection)
 	{
+		direction = indirection;
 		isMovingLeft = flag;
 	}
 
-	void CEraser::SetMovingRight(bool flag)
+	void CEraser::SetMovingRight(bool flag, int indirection)
 	{
+		direction = indirection;
 		isMovingRight = flag;
 	}
 
-	void CEraser::SetMovingUp(bool flag)
+	void CEraser::SetMovingUp(bool flag, int indirection)
 	{
+		direction = indirection;
 		isMovingUp = flag;
 	}
 

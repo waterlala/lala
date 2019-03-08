@@ -155,6 +155,9 @@
     <ClInclude Include="Source\StdAfx.h">
       <Filter>MFC</Filter>
     </ClInclude>
+    <ClInclude Include="Source\mygame.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
     <ClInclude Include="Source\CEraser.h">
       <Filter>MyGame</Filter>
     </ClInclude>
@@ -164,9 +167,6 @@
     <ClInclude Include="Source\CBouncingBall.h">
       <Filter>MyGame</Filter>
     </ClInclude>
-    <ClInclude Include="Source\mygame.h">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Source\game.rc">
@@ -174,28 +174,22 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\bmp00001.bmp">
+    <Image Include="C:\Users\stu31\Desktop\totalmap.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\bitmap4.bmp">
+    <Image Include="C:\Users\stu31\Desktop\hero.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\bitmap3.bmp">
+    <Image Include="C:\Users\stu31\Desktop\heroBack.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\bitmap5.bmp">
+    <Image Include="C:\Users\stu31\Desktop\heroFront.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="cb9j2-bcpmi.bmp">
+    <Image Include="C:\Users\stu31\Desktop\heroLeft.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="test.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Source\test.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="picture\test.bmp">
+    <Image Include="C:\Users\stu31\Desktop\heroRight.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
