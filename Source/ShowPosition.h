@@ -2,21 +2,12 @@ namespace game_framework {
 	class ShowPosition
 	{
 	public:
-		void getHeroPosition(int inX,int inY);
-		void getBossPosition(int inX, int inY);
-		void getMapPosition(int inX, int inY);
-		void getArrowPosition(int inX, int inY);
-		void Initialize();
 		void LoadBitmap();
-		void OnMove();
-		void OnShow();
+		void OnShow(map<string, int> position, int& arrowMode, int holdTime, int shootTime);
 		void OnShowNumber(int inX, int inY, int inNumber);
 		void OnShowChangShow(int inX, int inY, int inNumber);
 	protected:
 		CMovingBitmap number[11];
-		int bossX, bossY;
-		int heroX, heroY;
 		int mapX, mapY;
-		int arrowX, arrowY;
 	};
 }

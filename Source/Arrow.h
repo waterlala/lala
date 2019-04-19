@@ -6,29 +6,34 @@ namespace game_framework
 		Arrow();
 		void Initialize();
 		void LoadBitmap();
-		void LoadHeroPosition(int inX, int inY, int direction);
-		int returnArrowX();
-		int returnArrowY();
-		bool IsShooted();
-		int returnShootStyle();
-		void OnMove();
-		void OnShow();
+		int GetX();
+		int GetY();
+		
 		void SetShoot(bool flag);
-	protected:
-		const int SHOOT_TIME = 12;
-		int BACK_SPEED = 5;
-		CMovingBitmap arrow;
-		CAnimation moveArrow = CAnimation(1);
-		int shootSpeed;
-		int shootTime;
-		double dx, dy;
-		double changX, changY;
-		bool isShoot;
-		int direction, shootdirection;
+		bool IsShooted();
+		int GetHoldTime();
+		int GetShootTime();
 
-		int waitTime;
-		int shootStyle;
-		int arrowX, arrowY;
-		int heroX, heroY;
+		void ShootMode(int& arrowMode, const int DIRECTION, map<string, int>& position);
+		void SetShootDirection(const int direction);
+		bool IsCD();
+
+		void OnShow(int& arrowMode, map<string, int>& position);
+	private:
+		void OnShoot(const int DIRECTION, map<string, int>& position);
+		void Shooting();
+		bool OnReturn(map<string, int>& position);
+
+		CMovingBitmap arrow;
+		int shootDirection;
+
+		CAnimation moveArrow = CAnimation(1);
+		int arrowX = 0, arrowY = 0;
+		int waitTime = 0;
+		const int BACK_SPEED = 5;
+		int shootSpeed = 40;
+		int shootTime = 0;
+		int holdTime = 0;
+		bool isShoot = false;
 	};
 }

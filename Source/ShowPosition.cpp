@@ -10,22 +10,6 @@
 
 namespace game_framework
 {
-	void ShowPosition::getArrowPosition(int inX,int inY) {
-		arrowX = inX;
-		arrowY = inY;
-	}
-	void ShowPosition::getHeroPosition(int inX, int inY) {
-		heroX = inX;
-		heroY = inY;
-	}
-	void ShowPosition::getMapPosition(int inX, int inY) {
-		mapX = SCREEN_SIZE_X / 2 - inX;
-		mapY = SCREEN_SIZE_Y / 2 - inY;
-	}
-	void ShowPosition::getBossPosition(int inX, int inY) {
-		bossX = inX;
-		bossY = inY;
-	}
 	void ShowPosition::LoadBitmap() {
 		number[0].LoadBitmap(IDB_0, (0, 0, 0));
 		number[1].LoadBitmap(IDB_1, (0, 0, 0));
@@ -63,14 +47,17 @@ namespace game_framework
 		}
 	}
 
-	void ShowPosition::OnShow() {
-		OnShowChangShow(0, 0, mapX);
-		OnShowChangShow(40, 0, mapY);
-		OnShowChangShow(0, 20, heroX);
-		OnShowChangShow(40, 20, heroY);
-		OnShowChangShow(0, 40, arrowX);
-		OnShowChangShow(40, 40, arrowY);
-		OnShowChangShow(0, 60, bossX);
-		OnShowChangShow(40, 60, bossY);
+	void ShowPosition::OnShow(map<string, int> position,int& arrowMode, int holdTime, int shootTime) {
+		OnShowChangShow(0, 0, SCREEN_SIZE_X / 2 - position["heroX"]);
+		OnShowChangShow(40, 0, SCREEN_SIZE_Y / 2 - position["heroY"]);
+		OnShowChangShow(0, 20, position["heroX"]);
+		OnShowChangShow(40, 20, position["heroY"]);
+		OnShowChangShow(0, 40, position["arrowX"]);
+		OnShowChangShow(40, 40, position["arrowY"]);
+		OnShowChangShow(0, 60, position["bossX"]);
+		OnShowChangShow(40, 60, position["bossY"]);
+		OnShowChangShow(0, 80, holdTime);
+		OnShowChangShow(40, 80, arrowMode);
+		OnShowChangShow(0, 100, shootTime);
 	}
 }

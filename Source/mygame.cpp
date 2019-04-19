@@ -188,7 +188,7 @@ void CGameStateOver::OnShow()
 /////////////////////////////////////////////////////////////////////////////
 
 CGameStateRun::CGameStateRun(CGame *g)
-: CGameState(g), NUMBALLS(28)
+: CGameState(g)
 {
 	
 }
@@ -215,18 +215,16 @@ void CGameStateRun::OnMove()
 		else
 			hero.OnRoll(back.GetMap());
 	}
+	position["heroX"] = hero.GetX1(), position["heroY"] = hero.GetY1();
 
-	arrow.LoadHeroPosition(hero.GetX1(), hero.GetY1(), hero.GetDirection());
-	arrow.OnMove();
+	arrow.ShootMode(arrowMode, hero.GetDirection(), position);
+	position["arrowX"] = arrow.GetX(), position["arrowY"] = arrow.GetY();
 
 	boss.LoadMapPosition(hero.GetX1(), hero.GetY1());
-	boss.LoadArrowPosition(arrow.returnArrowX(), arrow.returnArrowY(), arrow.returnShootStyle());
-	boss.OnMove();
+	boss.LoadArrowPosition(arrow.GetX(), arrow.GetY());
+	boss.OnMove(arrow.IsShooted());
+	position["bossX"] = boss.returnBossX(), position["bossY"] = boss.returnBossY();
 
-	position.getArrowPosition(arrow.returnArrowX(), arrow.returnArrowY());
-	position.getBossPosition(boss.returnBossX(), boss.returnBossY());
-	position.getHeroPosition(hero.GetX1(), hero.GetY1());
-	position.getMapPosition(hero.GetX1(), hero.GetY1());
 }
 
 void CGameStateRun::OnInit()  					
@@ -236,7 +234,7 @@ void CGameStateRun::OnInit()
 	arrow.LoadBitmap();
 	back.LoadBitmap();
 	boss.LoadBitmap();
-	position.LoadBitmap();
+	position2.LoadBitmap();
 	ShowInitProgress(50);
 	Sleep(300);
 }
@@ -255,10 +253,6 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 	else if (!hero.IsRolling())
 	{
-		if (nChar == KEY_SHOOT) {
-			//hero.SetShooting(true);
-			arrow.SetShoot(true);
-		}
 		if (nChar == KEY_LEFT) {
 			hero.SetMovingLeft(true);
 		}
@@ -272,6 +266,20 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 			hero.SetMovingDown(true);
 		}
 		hero.SetDirection();
+
+		if (nChar == KEY_SHOOT) {
+			hero.SetShooting(true);
+			if (arrowMode == 1 && !arrow.IsCD()) {
+				arrowMode = 2;
+			}
+			else if (arrowMode == 2) {
+				arrow.SetShoot(false);
+			}
+			else if (arrowMode == 4) {
+				arrow.SetShoot(true);
+			}
+		}
+
 	}
 }
 
@@ -284,10 +292,6 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_SHOOT = 67;//keyboard C
 	const char KEY_ROLL = 88;
 
-	if (nChar == KEY_SHOOT){
-		//hero.SetShooting(false);
-		arrow.SetShoot(false);
-	}
 	if (nChar == KEY_LEFT)
 		hero.SetMovingLeft(false);
 	if (nChar == KEY_RIGHT)
@@ -297,6 +301,17 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == KEY_DOWN)
 		hero.SetMovingDown(false);
 	hero.SetDirection();
+
+	if (nChar == KEY_SHOOT) {
+		hero.SetShooting(false);
+		if (arrowMode == 2) {
+			arrow.SetShoot(true);
+			arrow.SetShootDirection(hero.GetDirection());
+		}
+		else if (arrowMode == 4) {
+			arrow.SetShoot(false);
+		}
+	}
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
@@ -328,9 +343,9 @@ void CGameStateRun::OnShow()
 {
 	back.OnShow(hero.GetX1(), hero.GetY1());
 	boss.shadowOnShow();
+	arrow.OnShow(arrowMode, position);
 	hero.OnShow();
-	arrow.OnShow();
 	boss.OnShow();
-	position.OnShow();
+	position2.OnShow(position,arrowMode, arrow.GetHoldTime(), arrow.GetShootTime());
 }
 }
